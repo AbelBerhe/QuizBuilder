@@ -1,0 +1,10 @@
+This gesture triggers the default functionality for a given item. Action = press, lift.#Gesture - Touch
+This gesture enters data selection mode. Allows you to select one or more items in a view and act upon the data using a contextual action bar. Action = press, wait, lift.#Gesture - Long Press
+This gesture scrolls overflowing content, or navigates between views in the same hierarchy. Action = press, move, life.#Gesture – Swipe
+This gesture rearranges data within a view, or moves data into a container (e.g. folders on Home Screen). Action = long press, move, lift.#Gesture – Drag
+This gesture zooms into content. Also used as a secondary gesture for text selection. Action = Two touches in quick succession.#Gesture - Double Touch
+This gesture zooms into content. Action = 2-finger press, move outwards, lift.#Gesture - Pinch Open
+This gesture zooms out of content. Action = 2-finger press, move inwards, lift.#Gesture - Pinch Close
+This allows your app to keep the user informed about important events, such as new messages in a chat app or a calendar event.#Notifications
+This is used to navigate, in reverse chronological order, through the history of screens the user has recently worked with. It is generally based on the temporal relationships between screens, rather than the app's hierarchy.#System back button
+This tray stays at the bottom and always keeps your most important shortcuts and folders in view regardless of which panel is currently showing.#Favorites

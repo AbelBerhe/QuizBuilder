@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="txt_view_info">Click button to start quiz</string>
+    <string name="txt_view_def" />
+    <string name="txt_trackQN" />
+    <string name="btn_start_quiz">Start Quiz</string>
+    <string name="btn_back" />
+    <string name="btn_opt1" />
+    <string name="btn_opt2" />
+    <string name="btn_opt3" />
+    <string name="btn_opt4" />
+    <string name="btn_next">Next</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_restart">Restart Quiz</string>
+    <string name="txt_result"/>
+    <string name="txt_comment"/>
+</resources>
