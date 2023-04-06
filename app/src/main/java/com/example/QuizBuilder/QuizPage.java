@@ -1,6 +1,7 @@
 package com.example.QuizBuilder;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,17 +21,16 @@ import java.util.Map;
 import java.util.Objects;
 
 public class QuizPage extends AppCompatActivity {
-    TextView txt_def,txt_trackQN;
-    Button btn_back,btn_opt1,btn_opt2,btn_opt3,btn_opt4,btn_next;
+    TextView txt_def, txt_trackQN;
+    Button btn_back, btn_opt1, btn_opt2, btn_opt3, btn_opt4, btn_next;
     ArrayList<Button> options;
     ArrayList<String> defs;
     ArrayList<String> terms;
     Map<String, String> match;
-    int countNumberOfQ=1;
-    int totalScore =0;
+    int countNumberOfQ = 1;
+    int totalScore = 0;
     final String IOTAG = "IO Error";
     final String GTAG = "Error";
-
 
 
     @Override
@@ -40,11 +40,11 @@ public class QuizPage extends AppCompatActivity {
         btn_back = findViewById(R.id.btn_back); // back button
         txt_def = findViewById(R.id.tex_def);
         txt_trackQN = findViewById(R.id.txt_trackQN);
-        btn_opt1 = findViewById(R.id.btn_opt1); // back option 1
-        btn_opt2 = findViewById(R.id.btn_opt2); // back option 2
-        btn_opt3 = findViewById(R.id.btn_opt3); // back option 3
-        btn_opt4 = findViewById(R.id.btn_opt4); // back option 4
-        btn_next = findViewById(R.id.btn_next); // back option next
+        btn_opt1 = findViewById(R.id.btn_opt1); // option 1
+        btn_opt2 = findViewById(R.id.btn_opt2); // option 2
+        btn_opt3 = findViewById(R.id.btn_opt3); // option 3
+        btn_opt4 = findViewById(R.id.btn_opt4); // option 4
+        btn_next = findViewById(R.id.btn_next);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,21 +55,21 @@ public class QuizPage extends AppCompatActivity {
             }
         }); //end btn_back listener
         //Creating an array of buttons
-        Button [] buttons = {btn_opt1,btn_opt2,btn_opt3,btn_opt4};
-        options  = new ArrayList<>(Arrays.asList(buttons));
+        Button[] buttons = {btn_opt1, btn_opt2, btn_opt3, btn_opt4};
+        options = new ArrayList<>(Arrays.asList(buttons));
         //Creating new objects of ArrayList of type String
         defs = new ArrayList<>();
         terms = new ArrayList<>();
 
         String line;
         BufferedReader br;
-        try{
+        try {
             //Opening file and reading one byte at a time using inputstream
             InputStream inputStream = getResources().openRawResource(R.raw.termsanddefs);
             //Reading one line at a time form inputstream using bufferreader
             br = new BufferedReader(new InputStreamReader(inputStream));
             //Checking for eof
-            while((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 //Splitting a string in to array of string using split
                 String[] arrStr = line.split("#");
                 //Adding elements  of the array to ArrayList
@@ -79,17 +79,17 @@ public class QuizPage extends AppCompatActivity {
 
             inputStream.close();
 
-        }catch (IOException e){
-            Log.e(IOTAG,"Error occurred while opening text file!");
-        }catch (Exception e){
-            Log.e(GTAG,"Error occurred!");
+        } catch (IOException e) {
+            Log.e(IOTAG, "Error occurred while opening text file!");
+        } catch (Exception e) {
+            Log.e(GTAG, "Error occurred!");
         }
 
-        //Creating new map object
+
         match = new HashMap<>();
-        for(int i=0; i< terms.size();i++){
+        for (int i = 0; i < terms.size(); i++) {
             //Adding defs and terms as keys and values respectively
-            match.put(defs.get(i),terms.get(i));
+            match.put(defs.get(i), terms.get(i));
         }
         txt_trackQN.setText("Question: ".concat(String.valueOf(countNumberOfQ)).concat("/").concat(String.valueOf(terms.size())));
         Collections.shuffle(defs);
@@ -100,10 +100,10 @@ public class QuizPage extends AppCompatActivity {
         btn_opt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Objects.equals(match.get(txt_def.getText().toString()), btn_opt1.getText().toString())) {
+                if (Objects.equals(match.get(txt_def.getText().toString()), btn_opt1.getText().toString())) {
                     btn_opt1.setBackground(getDrawable(R.drawable.green_round));
                     totalScore++;
-                }else {
+                } else {
                     btn_opt1.setBackground(getDrawable(R.drawable.error_round));
                 }
                 disableButtons();
@@ -113,10 +113,10 @@ public class QuizPage extends AppCompatActivity {
         btn_opt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Objects.equals(match.get(txt_def.getText().toString()), btn_opt2.getText().toString())){
+                if (Objects.equals(match.get(txt_def.getText().toString()), btn_opt2.getText().toString())) {
                     btn_opt2.setBackground(getDrawable(R.drawable.green_round));
                     totalScore++;
-                }else {
+                } else {
                     btn_opt2.setBackground(getDrawable(R.drawable.error_round));
                 }
                 disableButtons();
@@ -126,10 +126,10 @@ public class QuizPage extends AppCompatActivity {
         btn_opt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Objects.equals(match.get(txt_def.getText().toString()), btn_opt3.getText().toString())){
+                if (Objects.equals(match.get(txt_def.getText().toString()), btn_opt3.getText().toString())) {
                     btn_opt3.setBackground(getDrawable(R.drawable.green_round));
                     totalScore++;
-                }else {
+                } else {
                     btn_opt3.setBackground(getDrawable(R.drawable.error_round));
                 }
                 disableButtons();
@@ -138,10 +138,10 @@ public class QuizPage extends AppCompatActivity {
         btn_opt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Objects.equals(match.get(txt_def.getText().toString()), btn_opt4.getText().toString())){
+                if (Objects.equals(match.get(txt_def.getText().toString()), btn_opt4.getText().toString())) {
                     btn_opt4.setBackground(getDrawable(R.drawable.green_round));
                     totalScore++;
-                }else {
+                } else {
                     btn_opt4.setBackground(getDrawable(R.drawable.error_round));
                 }
                 disableButtons();
@@ -152,27 +152,27 @@ public class QuizPage extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                if(btn_next.getText().toString().equals("Finish")){
+                if (btn_next.getText().toString().equals("Finish")) {
                     Intent intent = new Intent("ResultPage");
                     Bundle extras = new Bundle();
-                    extras.putInt("KEY",totalScore);
+                    extras.putInt("KEY", totalScore);
                     intent.putExtras(extras);
-                    startActivityForResult(intent,1);
+                    startActivityForResult(intent, 1);
 
-                }else{
+                } else {
                     populateDefinition();
                     populateButtons();
                     Collections.shuffle(options);
                     countNumberOfQ++;
                     txt_trackQN.setText("Question: ".concat(String.valueOf(countNumberOfQ)).concat("/").concat(String.valueOf(terms.size())));
-                    if(countNumberOfQ ==terms.size()){
+                    if (countNumberOfQ == terms.size()) {
                         btn_next.setText("Finish");
                     }
 //                if(countNumberOfQ > terms.size()){
 //
 //                }
 
-                    //Setting button background color to the original one
+                    //Setting button background original color
                     btn_opt1.setBackground(getDrawable(R.drawable.round_corner2));
                     btn_opt2.setBackground(getDrawable(R.drawable.round_corner2));
                     btn_opt3.setBackground(getDrawable(R.drawable.round_corner2));
@@ -187,17 +187,17 @@ public class QuizPage extends AppCompatActivity {
 
 
     //Populate buttons with terms
-    public void  populateButtons(){
+    public void populateButtons() {
         Collections.shuffle(terms);
         String matchValue = match.get(txt_def.getText().toString());
 
-        int count=0;
-        while (count < options.size()){
-            if(count==0){
+        int count = 0;
+        while (count < options.size()) {
+            if (count == 0) {
                 options.get(count).setText(matchValue);
-            }else if(terms.get(count).equals(matchValue)) {
-                options.get(count).setText(terms.get(count+3));
-            }else{
+            } else if (terms.get(count).equals(matchValue)) {
+                options.get(count).setText(terms.get(count + 3));
+            } else {
                 options.get(count).setText(terms.get(count));
             }
             count++;
@@ -206,8 +206,8 @@ public class QuizPage extends AppCompatActivity {
     }
 
     //Populate textview with defs
-    public void populateDefinition(){
-       // Collections.shuffle(defs)
+    public void populateDefinition() {
+        // Collections.shuffle(defs)
         if (defs.size() != 0) {
             txt_def.setText(defs.get(0));
             defs.remove(0);
@@ -216,18 +216,18 @@ public class QuizPage extends AppCompatActivity {
 
 
     //Disable buttons if one buttons is clicked
-    public void disableButtons(){
-        int count =0;
-        while (count < options.size()){
+    public void disableButtons() {
+        int count = 0;
+        while (count < options.size()) {
             options.get(count).setEnabled(false);
             count++;
         }
     }
 
-   //Enable buttons if next button is clicked
-    public void enableButtons(){
-        int count =0;
-        while (count < options.size()){
+    //Enable buttons if next button is clicked
+    public void enableButtons() {
+        int count = 0;
+        while (count < options.size()) {
             options.get(count).setEnabled(true);
             count++;
         }

@@ -32,11 +32,11 @@ public class ResultPage extends AppCompatActivity {
         if (extras != null) {
             int value = extras.getInt("KEY");
             result.append(String.valueOf(value));
-            if(value >= 8){
+            if (value >= 8) {
                 comment.setText("Well Done!");
-            }else if(value >= 5){
+            } else if (value >= 5) {
                 comment.setText("Good Try!");
-            }else {
+            } else {
                 comment.setText("Try Again!");
             }
         }

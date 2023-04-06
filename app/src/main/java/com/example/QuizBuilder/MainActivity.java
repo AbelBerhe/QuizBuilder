@@ -21,19 +21,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Creating intent going to main page
-                Intent  intent = new Intent(MainActivity.this, QuizPage.class);
+                Intent intent = new Intent(MainActivity.this, QuizPage.class);
                 startActivity(intent);
                 //Toast.makeText(getApplicationContext(),"button start is  clicked",Toast.LENGTH_SHORT).show();
             }
         });
 
 
-
-
-
-
     }//end onCreate()
-
 
 
 }//end MainActivity
